@@ -10,6 +10,10 @@ class CategoryController {
             next(e)
         }
     }
+
+    async setCategory(){
+        await categoryService.setCategories();
+    }
 }
 
 module.exports = new CategoryController();
