@@ -7,6 +7,8 @@ const authMiddleware = require('../middleware/auth-middleware'); //для фун
 //пример router.get('/test', authMiddleware, userController.test);
 const categoryController = require('../controllers/category-controller');
 const brandsController = require('../controllers/brands-controller');
+const subcategoryController = require('../controllers/subcategory-controller');
+const productController = require('../controllers/product-controller');
 
 router.post('/registration',
     body('email').isEmail(),
@@ -18,10 +20,18 @@ router.post('/logout', userController.logout);
 router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
 router.get('/test', userController.test);
+
 router.get('/popularCategory', categoryController.getPopularCategory);
 router.get('/setCategory', categoryController.setCategory);
+
 router.get('/getBrandsFirstLetter', brandsController.getBrandsFirstLetters);
 router.get('/setBrands', brandsController.setBrands);
 router.get('/getAllBrands', brandsController.getAllBrands);
+
+router.get('/getSubcategory', subcategoryController.getSubcategories);
+router.get('/setSubcategory', subcategoryController.setSubcategory);
+
+router.get('/getProducts', productController.getProducts);
+router.get('/setProduct', productController.setProducts);
 
 module.exports = router;
