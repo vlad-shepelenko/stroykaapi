@@ -13,6 +13,17 @@ class SubcategoryController {
     async setSubcategory() {
         await subcategoryService.setSubcategories();
     }
+
+    async getSubcategoryProdicts(req,res,next){
+        try{
+            const {subcategory} = req.body;
+            const subcategoryProducts = await subcategoryService.getSubcategoryProducts(subcategory);
+            return res.json(subcategoryProducts)
+        }
+        catch(e){
+            next(e)
+        }
+    }
 }
 
 module.exports = new SubcategoryController();

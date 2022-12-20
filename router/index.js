@@ -30,8 +30,10 @@ router.get('/getAllBrands', brandsController.getAllBrands);
 
 router.get('/getSubcategory', subcategoryController.getSubcategories);
 router.get('/setSubcategory', subcategoryController.setSubcategory);
+router.post('/getSubcategoryProducts', subcategoryController.getSubcategoryProdicts);
 
 router.get('/getProducts', productController.getProducts);
 router.get('/setProduct', productController.setProducts);
+router.post('/getProductById', productController.getProductById);
 
 module.exports = router;

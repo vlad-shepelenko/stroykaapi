@@ -14,6 +14,17 @@ class ProductController {
     async setProducts() {
         await productService.setProducts();
     }
+
+    async getProductById(req,res, next){
+        try{
+            const {id} = req.body;
+            const product = await productService.getProductById(id);
+            return res.json(product)
+        }
+        catch(e){
+            next(e)
+        }
+    }
 }
 
 module.exports = new ProductController();

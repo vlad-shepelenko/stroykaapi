@@ -1,5 +1,6 @@
 const SubcategoryModel = require('../models/subcategory-model');
 const CategoryModel = require('../models/category-model')
+const ProductModel = require('../models/product-model')
 
 class SubcategoryService {
     async getSubcategories() {
@@ -10,7 +11,8 @@ class SubcategoryService {
         subcategories.map((el) => {
             let { categoryName } = el;
             categoryName = JSON.stringify(categoryName);
-            categoryName = categoryName.replaceAll('"', '');
+            categoryName = categoryName.replace('"','')
+            categoryName = categoryName.replace('"', '')
             arrayIds.add(categoryName);
         })
 
@@ -18,7 +20,8 @@ class SubcategoryService {
         for (let el of arrayIds) {
             let arr = await CategoryModel.findById(el)
             let id = JSON.stringify(arr._id)
-            id = id.replaceAll('"', '')
+            id = id.replace('"', '')
+            id = id.replace('"', '')
             categoryNames.push([id, arr.categoryName, arr.categoryImage]);
         }
 
@@ -34,6 +37,24 @@ class SubcategoryService {
 
     async setSubcategories() {
         //const subcategory = await SubcategoryModel.create({ subcategoryName: 'Обои', categoryName: '63a02743a677a01040228ce8' })
+    }
+
+    async getSubcategoryProducts(subcategory){
+        console.log(subcategory)
+        const subcat = await SubcategoryModel.find({subcategoryName: subcategory})
+        console.log(subcat)
+        const {_id} = subcat[0];
+        
+        let id = JSON.stringify(_id);
+        id = id.replace('"', '')
+        id = id.replace('"', '')
+        //const category = await CategoryModel.find({}, { categoryName: subcategory, _id: 1 });
+        console.log(id);
+
+        const products = await ProductModel.find({subcategoryName: _id})
+        console.log(products)
+
+        return products;
     }
 }
 
