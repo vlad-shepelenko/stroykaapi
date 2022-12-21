@@ -9,6 +9,7 @@ const categoryController = require('../controllers/category-controller');
 const brandsController = require('../controllers/brands-controller');
 const subcategoryController = require('../controllers/subcategory-controller');
 const productController = require('../controllers/product-controller');
+const cartController = require('../controllers/cart-controller');
 
 router.post('/registration',
     body('email').isEmail(),
@@ -35,5 +36,10 @@ router.post('/getSubcategoryProducts', subcategoryController.getSubcategoryProdi
 router.get('/getProducts', productController.getProducts);
 router.get('/setProduct', productController.setProducts);
 router.post('/getProductById', productController.getProductById);
+
+router.get('/getCarts', cartController.getCarts);
+router.post('/setCart', cartController.setCarts);
+router.post('/getCartById', cartController.getCartById);
+router.delete('/deleteCartProductById/:id', cartController.deleteCartProductById)
 
 module.exports = router;

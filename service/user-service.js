@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const mailService = require('./mail-service');
 const tokenService = require('./token-service');
+
 const UserDto = require('../dtos/user-dtos');
 const userModel = require('../models/user-model');
 const ApiError = require('../exceptions/api-error');
