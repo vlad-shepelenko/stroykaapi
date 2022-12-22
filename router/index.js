@@ -10,6 +10,7 @@ const brandsController = require('../controllers/brands-controller');
 const subcategoryController = require('../controllers/subcategory-controller');
 const productController = require('../controllers/product-controller');
 const cartController = require('../controllers/cart-controller');
+const paymentController = require('../controllers/payments-controller');
 
 router.post('/registration',
     body('email').isEmail(),
@@ -41,5 +42,8 @@ router.get('/getCarts', cartController.getCarts);
 router.post('/setCart', cartController.setCarts);
 router.post('/getCartById', cartController.getCartById);
 router.delete('/deleteCartProductById/:id', cartController.deleteCartProductById)
+
+router.get('/config', paymentController.getConfig);
+router.post('/createPayment', paymentController.createPayment)
 
 module.exports = router;
