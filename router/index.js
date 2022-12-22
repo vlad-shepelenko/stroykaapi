@@ -11,6 +11,7 @@ const subcategoryController = require('../controllers/subcategory-controller');
 const productController = require('../controllers/product-controller');
 const cartController = require('../controllers/cart-controller');
 const paymentController = require('../controllers/payments-controller');
+const orderController = require('../controllers/orders-controller')
 
 router.post('/registration',
     body('email').isEmail(),
@@ -45,5 +46,7 @@ router.delete('/deleteCartProductById/:id', cartController.deleteCartProductById
 
 router.get('/config', paymentController.getConfig);
 router.post('/createPayment', paymentController.createPayment)
+
+router.post('/setOrder', orderController.setOrder)
 
 module.exports = router;
