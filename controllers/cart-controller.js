@@ -41,6 +41,16 @@ class CartController {
             next(e)
         }
     }
+
+    async deleteUserCartById(req, res, next){
+        try{
+            const {id} = req.params;
+            await cartService.deleteUserCartById(id)
+        }
+        catch(e){
+            next(e)
+        }
+    }
 }
 
 module.exports = new CartController();

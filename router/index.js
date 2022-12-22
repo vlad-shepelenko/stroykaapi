@@ -43,10 +43,12 @@ router.get('/getCarts', cartController.getCarts);
 router.post('/setCart', cartController.setCarts);
 router.post('/getCartById', cartController.getCartById);
 router.delete('/deleteCartProductById/:id', cartController.deleteCartProductById)
+router.delete('/deleteUserCartById/:id', cartController.deleteUserCartById)
 
 router.get('/config', paymentController.getConfig);
 router.post('/createPayment', paymentController.createPayment)
 
 router.post('/setOrder', orderController.setOrder)
+router.post('/getOrdersById', orderController.getOrdersById)
 
 module.exports = router;
