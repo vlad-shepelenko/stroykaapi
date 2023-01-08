@@ -8,19 +8,36 @@ class ProductService {
         return products;
     }
 
-    async getProductById(id){
-        let product = await ProductModel.find({_id: id})
+    async getProductById(id) {
+        let product = await ProductModel.find({ _id: id })
 
-        const {supplierName} = product[0];
+        const { supplierName } = product[0];
         let supplier = JSON.stringify(supplierName);
-        supplier = supplier.replace('"','');
-        supplier = supplier.replace('"','');
+        supplier = supplier.replace('"', '');
+        supplier = supplier.replace('"', '');
 
-        const supplierData = await SupplierModel.find({_id: supplier})
+        const supplierData = await SupplierModel.find({ _id: supplier })
 
-        let obj = {product: product[0], supplier: supplierData[0].supplierName}
-        
-        return obj
+        let obj = { product: product[0], supplier: supplierData[0].supplierName }
+
+        return obj;
+    }
+
+    async getSearchProduct(name) {
+        let product = await ProductModel.find({ 'productName': { '$regex': name, '$options': 'i' } })
+
+        return product;
+    }
+
+    async getFilterProducts(minPrice, maxPrice, brands, supplier) {
+        console.log(minPrice)
+        console.log(maxPrice)
+        console.log(brands)
+        console.log(supplier)
+        let products = await ProductModel.find({ productPrice: { $gte: minPrice, $lte: maxPrice } });
+        console.log(products)
+
+        return products;
     }
 
     async setProducts() {

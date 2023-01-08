@@ -11,7 +11,8 @@ const subcategoryController = require('../controllers/subcategory-controller');
 const productController = require('../controllers/product-controller');
 const cartController = require('../controllers/cart-controller');
 const paymentController = require('../controllers/payments-controller');
-const orderController = require('../controllers/orders-controller')
+const orderController = require('../controllers/orders-controller');
+const supplierController = require('../controllers/suppliers-controller');
 
 router.post('/registration',
     body('email').isEmail(),
@@ -37,7 +38,9 @@ router.post('/getSubcategoryProducts', subcategoryController.getSubcategoryProdi
 
 router.get('/getProducts', productController.getProducts);
 router.get('/setProduct', productController.setProducts);
+router.post('/getSearchProduct', productController.getSearchProducts)
 router.post('/getProductById', productController.getProductById);
+router.post('/getFilterProducts', productController.getFilterProducts);
 
 router.get('/getCarts', cartController.getCarts);
 router.post('/setCart', cartController.setCarts);
@@ -51,4 +54,5 @@ router.post('/createPayment', paymentController.createPayment)
 router.post('/setOrder', orderController.setOrder)
 router.post('/getOrdersById', orderController.getOrdersById)
 
+router.get('/getSuppliers', supplierController.getSuppliers)
 module.exports = router;
