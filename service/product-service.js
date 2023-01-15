@@ -30,13 +30,23 @@ class ProductService {
     }
 
     async getFilterProducts(minPrice, maxPrice, brands, supplier) {
-        console.log(minPrice)
-        console.log(maxPrice)
-        console.log(brands)
-        console.log(supplier)
-        let products = await ProductModel.find({ productPrice: { $gte: minPrice, $lte: maxPrice } });
-        console.log(products)
-
+        let products;
+        if (brands.length == 0) {
+            if (supplier.length == 0) {
+                products = await ProductModel.find({ productPrice: { $gte: minPrice, $lte: maxPrice } });
+            }
+            else {
+                products = await ProductModel.find({ productPrice: { $gte: minPrice, $lte: maxPrice }, supplierName: { $eq: supplier } });
+            }
+        }
+        else {
+            if (supplier.length == 0) {
+                products = await ProductModel.find({ productPrice: { $gte: minPrice, $lte: maxPrice }, brandName: { $in: brands } });
+            }
+            else {
+                products = await ProductModel.find({ productPrice: { $gte: minPrice, $lte: maxPrice }, brandName: { $in: brands }, supplierName: { $eq: supplier } });
+            }
+        }
         return products;
     }
 

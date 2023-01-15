@@ -41,7 +41,7 @@ class ProductController {
         try {
             const { minPrice, maxPrice, brands, supplier } = req.body;
             const products = await productService.getFilterProducts(minPrice, maxPrice, brands, supplier)
-
+            return res.json(products);
         }
         catch (e) {
             next(e)
