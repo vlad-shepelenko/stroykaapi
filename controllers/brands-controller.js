@@ -21,6 +21,16 @@ class BrandsController{
         }
     }
 
+    async getPopularBrands(req, res, next){
+        try{
+            const brands = await brandsService.getPopularBrands();
+            return res.json(brands)
+        }
+        catch(e){
+            next(e)
+        }
+    }
+
     async setBrands(){
         await brandsService.setBrands();
     }

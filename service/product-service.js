@@ -1,5 +1,7 @@
 const ProductModel = require('../models/product-model')
 const SupplierModel = require('../models/supplier-model')
+const SubcategoryModel = require('../models/subcategory-model')
+const BrandModel = require('../models/brands-model')
 
 class ProductService {
     async getProducts() {
@@ -48,6 +50,34 @@ class ProductService {
             }
         }
         return products;
+    }
+
+    async getProductsByCategoryId(id){
+        let subcategories = await SubcategoryModel.find({categoryName: {$eq: id}})
+        let sucategoriesArray = [];
+        for(let el of subcategories){
+            sucategoriesArray.push(el._id)
+        }
+        let products = await ProductModel.find({subcategoryName: {$in: sucategoriesArray}});
+        return products;
+    }
+
+    async getPopularProducts(){
+        let products = await ProductModel.find().limit(4);
+        return products;
+    }
+
+    async getProductByBrandId(id){
+        let products = await ProductModel.find({brandName: {$eq: id}})
+        return products;
+    }
+
+    async getProductByBrandName(name){
+        let brandId = await BrandModel.find({brandName: {$eq: name}})
+        let id = brandId[0]._id;
+        let products = await ProductModel.find({brandName: {$eq: id}})
+        console.log(products);
+        return products
     }
 
     async setProducts() {

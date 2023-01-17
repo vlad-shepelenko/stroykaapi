@@ -24,6 +24,11 @@ class BrandsService {
         return brands;
     }
 
+    async getPopularBrands(){
+        let brands = await BrandsModel.find().limit(12);
+        return brands;
+    }
+
     async setBrands(){
         //const brand = await BrandsModel.create({brandName: 'Уют', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
         //const brand1 = await BrandsModel.create({brandName: 'Фаско', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});

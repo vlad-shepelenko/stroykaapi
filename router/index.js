@@ -13,6 +13,7 @@ const cartController = require('../controllers/cart-controller');
 const paymentController = require('../controllers/payments-controller');
 const orderController = require('../controllers/orders-controller');
 const supplierController = require('../controllers/suppliers-controller');
+const actionController = require('../controllers/actions-controller');
 
 router.post('/registration',
     body('email').isEmail(),
@@ -31,6 +32,7 @@ router.get('/setCategory', categoryController.setCategory);
 router.get('/getBrandsFirstLetter', brandsController.getBrandsFirstLetters);
 router.get('/setBrands', brandsController.setBrands);
 router.get('/getAllBrands', brandsController.getAllBrands);
+router.get('/getPopularBrands', brandsController.getPopularBrands);
 
 router.get('/getSubcategory', subcategoryController.getSubcategories);
 router.get('/setSubcategory', subcategoryController.setSubcategory);
@@ -41,6 +43,10 @@ router.get('/setProduct', productController.setProducts);
 router.post('/getSearchProduct', productController.getSearchProducts)
 router.post('/getProductById', productController.getProductById);
 router.post('/getFilterProducts', productController.getFilterProducts);
+router.post('/getProductsByCategoryId', productController.getProductsByCategoryId);
+router.get('/getPopularProducts', productController.getPopularProducts);
+router.post('/getProductsByBrandId', productController.getProductByBrandId);
+router.post('/getProductByBrandName', productController.getProductByBrandName);
 
 router.get('/getCarts', cartController.getCarts);
 router.post('/setCart', cartController.setCarts);
@@ -55,4 +61,7 @@ router.post('/setOrder', orderController.setOrder)
 router.post('/getOrdersById', orderController.getOrdersById)
 
 router.get('/getSuppliers', supplierController.getSuppliers)
+
+router.get('/getActions', actionController.getActions)
+
 module.exports = router;
