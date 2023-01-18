@@ -28,20 +28,6 @@ class BrandsService {
         let brands = await BrandsModel.find().limit(12);
         return brands;
     }
-
-    async setBrands(){
-        //const brand = await BrandsModel.create({brandName: 'Уют', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-        //const brand1 = await BrandsModel.create({brandName: 'Фаско', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-        //const brand2 = await BrandsModel.create({brandName: 'Фертика', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-        //const brand3 = await BrandsModel.create({brandName: 'Формат', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-        //const brand4 = await BrandsModel.create({brandName: 'Фрекен Бок', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-        //const brand5 = await BrandsModel.create({brandName: 'Шахтинская плитка', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-        //const brand6 = await BrandsModel.create({brandName: 'Штрих', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-        //const brand7 = await BrandsModel.create({brandName: 'ЭКО', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-        //const brand8 = await BrandsModel.create({brandName: 'Эко НОМ', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-        //const brand9 = await BrandsModel.create({brandName: 'Эксперт', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-        //const brand10 = await BrandsModel.create({brandName: 'Яр краски', brandImage: 'https://i.imgur.com/w8rjX2Z.png'});
-    }
 }
 
 module.exports = new BrandsService();

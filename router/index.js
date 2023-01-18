@@ -3,7 +3,7 @@ const userController = require('../controllers/user-controller');
 const router = new Router();
 const { body } = require('express-validator')
 
-const authMiddleware = require('../middleware/auth-middleware'); //для функций которым нужна авторизация
+const authMiddleware = require('../middleware/auth-middleware');
 //пример router.get('/test', authMiddleware, userController.test);
 const categoryController = require('../controllers/category-controller');
 const brandsController = require('../controllers/brands-controller');
@@ -14,6 +14,7 @@ const paymentController = require('../controllers/payments-controller');
 const orderController = require('../controllers/orders-controller');
 const supplierController = require('../controllers/suppliers-controller');
 const actionController = require('../controllers/actions-controller');
+const userdataController = require('../controllers/userdata-controller');
 
 router.post('/registration',
     body('email').isEmail(),
@@ -63,5 +64,8 @@ router.post('/getOrdersById', orderController.getOrdersById)
 router.get('/getSuppliers', supplierController.getSuppliers)
 
 router.get('/getActions', actionController.getActions)
+
+router.post('/setUserdata', userdataController.setUserdata)
+router.post('/getUserdata', userdataController.getUserdataById)
 
 module.exports = router;

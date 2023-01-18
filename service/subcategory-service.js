@@ -35,24 +35,15 @@ class SubcategoryService {
         return resultArray;
     }
 
-    async setSubcategories() {
-        //const subcategory = await SubcategoryModel.create({ subcategoryName: 'Обои', categoryName: '63a02743a677a01040228ce8' })
-    }
-
     async getSubcategoryProducts(subcategory){
-        console.log(subcategory)
         const subcat = await SubcategoryModel.find({subcategoryName: subcategory})
-        console.log(subcat)
         const {_id} = subcat[0];
         
         let id = JSON.stringify(_id);
         id = id.replace('"', '')
         id = id.replace('"', '')
-        //const category = await CategoryModel.find({}, { categoryName: subcategory, _id: 1 });
-        console.log(id);
 
         const products = await ProductModel.find({subcategoryName: _id})
-        console.log(products)
 
         return products;
     }

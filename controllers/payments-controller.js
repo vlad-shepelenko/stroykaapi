@@ -6,7 +6,6 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
 class PaymentsController {
     async getConfig(req, res, next) {
         try {
-            //const key = paymentsService.getConfig();
             res.send({
                 publishableKey: process.env.STRIPE_PUBLISHABLE_KEY
             })
